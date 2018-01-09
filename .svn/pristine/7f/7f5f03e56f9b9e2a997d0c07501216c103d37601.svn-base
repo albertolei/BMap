@@ -18,13 +18,7 @@
 	<body>
 		<div id="container"></div>
 	</body>
-	<script type="application/javascript">
-		//判断浏览区是否支持canvas
-		function isSupportCanvas () {
-			var elem = document.createElement('canvas');
-			return !!(elem.getContext && elem.getContext('2d'));
-		}
-	</script>
+</html>
 	<script type="text/javascript">
 		var map = new BMap.Map("container"); // 创建地图实例
 		var point = new BMap.Point(108.953459,34.265698);
@@ -63,40 +57,17 @@
 			}
 		});
 		
-/*		map.addOverlay(heatmapOverlay);
+		map.addOverlay(heatmapOverlay);
 		
 		heatmapOverlay.setDataSet({
 			data: points,
 			max: 400
-		});*/
-		
-		//添加自定义标注
-		var pt = new BMap.Point(108.953459, 34.265698);
-		var myIcon = new BMap.Icon('icons/icon_thisisus.jpg', new BMap.Size(30, 15));
-		var marker = new BMap.Marker(pt, {icon : myIcon});
-//		map.addOverlay(marker);
-
-		//添加折线
-		var pointArr = new Array();
-		for(i = 0; i < points.length; i++){
-			pointArr.push(new BMap.Point(points[i].lng, points[i].lat));
-		}
-		//BMap_Symbol_SHAPE_BACKWARD_OPEN_ARROW百度预定义的箭头方向向下的非闭合箭头
-		var sy = new BMap.Symbol(BMap_Symbol_SHAPE_BACKWARD_OPEN_ARROW,{scale:0.2, strokeColor:'#000', strokeWeight: '1'});
-		
-		//sy是符号样式，offset为符号相对于线起点的位置，取值可以是百分比也可以是像素位置，默认为"100%"，//repeat为符号在线上重复显示的距离，可以是百分比也可以是距离值，同时设置repeat与offset时，以repeat为准
-		var icons = new BMap.IconSequence(sy, '10', '10');
-		var polyline = new BMap.Polyline(pointArr, {
-			enableEditing: false,
-			enableClicking:true,
-			icons:[icons],
-			strokerColor : 'blue',
-			strokerWeight : '1', 
-			strokerOpacity:0.5
 		});
-		map.addOverlay(polyline);
+		
+		//判断浏览区是否支持canvas
+		function isSupportCanvas () {
+			var elem = document.createElement('canvas');
+			return !!(elem.getContext && elem.getContext('2d'));
+		}
 	</script>
-</html>
-
-
  
